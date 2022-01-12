@@ -52,6 +52,9 @@ async def on_message(message):
 
   if message.content.startswith("hello"):
     await message.channel.send("Hello there")
+
+  if message.content == "users":
+            await message.channel.send(f"Number of Members in this server: {id.member_count}")
     
   if message.content.startswith("inspire"):
     quote = get_quote()
