@@ -7,9 +7,11 @@ from replit import db
 from keep_alive import keep_alive
 my_secret = os.environ['token']
 
-client = discord.Client()
+intents = discord.Intents.default()
+intents.members = True
+client = discord.Client(intents = intents)
 
-sad_words = ["sad", "depressed", "unhappy", "miserable", "depressing"]
+sad_words = ["sad", "depressed", "unhappy", "miserable", "depressing", "lost"]
 
 starter_encouragements = ["Cheer up!", "Hang in there :)", "You got this!", "You are a great person :)", "We are here for you <3", "Care to share?"]
 
@@ -38,7 +40,14 @@ def delete_encouragements(index):
 
 @client.event
 async def on_ready():
-    print(f'{client.user.name} has connected to Discord!')
+    print(f"{client.user.name} has connected to Discord!")
+
+@client.event
+async def on_member_join(member):
+  guild = client.get_guild(930561768974073936)
+  channel = guild.get_channel(930561768974073940)
+  await channel.send(f"Welcome to the server {member.mention} ! :partying_face: Please type in 'help' so that I may assist you")
+  await member.send(f"Welcome to {guild.name}'s server, {member.name}! :partying_face:")
 
 @client.event
 async def on_message(message):
@@ -46,7 +55,7 @@ async def on_message(message):
     return
 
   if message.content.startswith("help"):
-        embed = discord.Embed(title = "Help on BOT", description = "Some useful commands")
+        embed = discord.Embed(title = "Help on BOT", description = "Some useful commands (please type with lowercase letters)")
         embed.add_field(name = "hello", value = "Greets the user")
         embed.add_field(name="inspire", value = "Prints out random inspirational quotes")
         embed.add_field(name="congrats", value = "congratulates the user")
