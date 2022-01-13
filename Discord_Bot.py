@@ -9,7 +9,7 @@ my_secret = os.environ['token']
 
 client = discord.Client()
 
-sad_words = ["sad", "depressed", "unhapy", "miserable", "depressing"]
+sad_words = ["sad", "depressed", "unhappy", "miserable", "depressing"]
 
 starter_encouragements = ["Cheer up!", "Hang in there :)", "You got this!", "You are a great person :)", "We are here for you <3", "Care to share?"]
 
