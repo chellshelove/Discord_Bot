@@ -54,9 +54,14 @@ async def on_message(message):
   if message.author == client.user:
     return
 
+  guild = client.get_guild(930561768974073936)
+  if message.content.startswith("users"):
+      await message.channel.send(f"Number of Members in this Server: {guild.member_count}")
+
   if message.content.startswith("help"):
         embed = discord.Embed(title = "Help on BOT", description = "Some useful commands (please type with lowercase letters)")
         embed.add_field(name = "hello", value = "Greets the user")
+        embed.add_field(name = "users", value = "Prints out the number of people in the server")
         embed.add_field(name="inspire", value = "Prints out random inspirational quotes")
         embed.add_field(name="congrats", value = "congratulates the user")
         embed.add_field(name = "responding true", value = "turns on bot response")
