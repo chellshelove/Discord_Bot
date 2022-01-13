@@ -3,32 +3,12 @@ import os
 import requests
 import json
 import random
-import time
-import asyncio
+import os
 from replit import db
 from keep_alive import keep_alive
 my_secret = os.environ['token']
 
-messages = joined = 0
-
 client = discord.Client()
-
-async def update_stats():
-    await client.wait_until_ready()
-    global messages, joined
-
-    while not client.is_closed():
-        try:
-            with open("stats.txt", "a") as f:
-                f.write(f"Time: {int(time.time())}, Messages: {messages}, Members Joined: {joined}\n")
-
-            messages = 0
-            joined = 0
-
-            await asyncio.sleep(17)
-        except Exception as e:
-            print(e)
-            await asyncio.sleep(17)
 
 sad_words = ["sad", "depressed", "unhapy", "miserable", "depressing"]
 
@@ -36,7 +16,6 @@ starter_encouragements = ["Cheer up!", "Hang in there :)", "You got this!", "You
 
 if "responding" not in db.keys():
   db["responding"] = True
-
 
 def get_quote():
   response = requests.get("https://zenquotes.io/api/random")
@@ -60,7 +39,7 @@ def delete_encouragements(index):
 
 @client.event
 async def on_ready():
-  print("We have logged in as {0.user}".format(client))
+    print(f'{client.user.name} has connected to Discord!')
 
 @client.event
 async def on_message(message):
@@ -70,7 +49,8 @@ async def on_message(message):
   if message.content.startswith("help"):
         embed = discord.Embed(title = "Help on BOT", description = "Some useful commands")
         embed.add_field(name = "hello", value = "Greets the user")
-        embed.add_field(name="inspire", value="Prints out random inspirational quotes")
+        embed.add_field(name="inspire", value = "Prints out random inspirational quotes")
+        embed.add_field(name="congrats", value = "congratulates the user")
         embed.add_field(name = "responding true", value = "turns on bot response")
         embed.add_field(name = "responding false", value = "turns off bot response")
         embed.add_field(name = "new", value = "used to add new encouragements")
@@ -84,6 +64,9 @@ async def on_message(message):
   if message.content.startswith("inspire"):
     quote = get_quote()
     await message.channel.send(quote)
+
+  if message.content.startswith("congrats"):
+    await message.channel.send("Congratulations! 🎉")
 
   if db["responding"]:
     options = starter_encouragements
