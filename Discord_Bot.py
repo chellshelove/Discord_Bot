@@ -11,7 +11,7 @@ intents = discord.Intents.default()
 intents.members = True
 client = discord.Client(intents = intents)
 
-sad_words = ["sad", "depressed", "unhappy", "miserable", "depressing", "lost"]
+sad_words = ["sad", "depressed", "unhappy", "miserable", "depressing", "lost", "rough"]
 
 starter_encouragements = ["Cheer up!", "Hang in there :)", "You got this!", "You are a great person :)", "We are here for you <3", "Care to share?"]
 
@@ -60,9 +60,12 @@ async def on_message(message):
 
   if message.content.startswith("help"):
         embed = discord.Embed(title = "Help on BOT", description = "Some useful commands (please type with lowercase letters)")
-        embed.add_field(name = "hello", value = "Greets the user")
+        embed.add_field(name = "hello, hi, hey, hai, yo", value = "Greets the user")
+        embed.add_field(name = "wassup", value = "bot tells you what's up")
+        embed.add_field(name = "how are you, how r u, hru", value = "bot replies with how they're feeling")
+        embed.add_field(name = "aw", value = "bot loves you")
         embed.add_field(name = "users", value = "Prints out the number of people in the server")
-        embed.add_field(name = "thanks", value = "The bot is glad to be of help")
+        embed.add_field(name = "thanks, thx", value = "The bot is glad to be of help")
         embed.add_field(name="inspire", value = "Prints out random inspirational quotes")
         embed.add_field(name="congrats", value = "congratulates the user")
         embed.add_field(name = "responding true", value = "turns on bot response")
@@ -74,6 +77,33 @@ async def on_message(message):
 
   if message.content.startswith("hello"):
     await message.channel.send("Hello there")
+
+  if message.content.startswith("hi"):
+    await message.channel.send("Hello there")
+
+  if message.content.startswith("hey"):
+    await message.channel.send("Hello there")
+
+  if message.content.startswith("hai"):
+    await message.channel.send("Hello there")
+
+  if message.content.startswith("yo"):
+    await message.channel.send("Hello there")
+
+  if message.content.startswith("wassup"):
+    await message.channel.send("The sky lol")
+
+  if message.content.startswith("how are you"):
+    await message.channel.send("Good now that you're here")
+
+  if message.content.startswith("how r u"):
+    await message.channel.send("Good now that you're here")
+
+  if message.content.startswith("hru"):
+    await message.channel.send("Good now that you're here")
+
+  if message.content.startswith("aw"):
+    await message.channel.send(":smiling_face_with_3_hearts:")
     
   if message.content.startswith("inspire"):
     quote = get_quote()
@@ -83,6 +113,9 @@ async def on_message(message):
     await message.channel.send("Congratulations! 🎉")
 
   if message.content.startswith("thanks"):
+    await message.channel.send("The pleasure is all mine")
+
+  if message.content.startswith("thx"):
     await message.channel.send("The pleasure is all mine")
 
   if db["responding"]:
