@@ -62,6 +62,7 @@ async def on_message(message):
         embed = discord.Embed(title = "Help on BOT", description = "Some useful commands (please type with lowercase letters)")
         embed.add_field(name = "hello", value = "Greets the user")
         embed.add_field(name = "users", value = "Prints out the number of people in the server")
+        embed.add_field(name = "thanks", value = "The bot is glad to be of help")
         embed.add_field(name="inspire", value = "Prints out random inspirational quotes")
         embed.add_field(name="congrats", value = "congratulates the user")
         embed.add_field(name = "responding true", value = "turns on bot response")
@@ -80,6 +81,9 @@ async def on_message(message):
 
   if message.content.startswith("congrats"):
     await message.channel.send("Congratulations! 🎉")
+
+  if message.content.startswith("thanks"):
+    await message.channel.send("The pleasure is all mine")
 
   if db["responding"]:
     options = starter_encouragements
