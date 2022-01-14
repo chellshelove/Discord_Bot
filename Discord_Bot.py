@@ -46,7 +46,7 @@ async def on_ready():
 async def on_member_join(member):
   guild = client.get_guild(930561768974073936)
   channel = guild.get_channel(930561768974073940)
-  await channel.send(f"Welcome to the server {member.mention} ! :partying_face: Please type in 'help' so that I may assist you")
+  await channel.send(f"Welcome to the server {member.mention} ! :partying_face: Please type in 'help' so that I may assist you.")
   await member.send(f"Welcome to {guild.name}'s server, {member.name}! :partying_face:")
 
 @client.event
@@ -66,7 +66,7 @@ async def on_message(message):
         embed.add_field(name = "aw", value = "bot loves you")
         embed.add_field(name = "users", value = "Prints out the number of people in the server")
         embed.add_field(name = "thanks, thx", value = "The bot is glad to be of help")
-        embed.add_field(name = "lol, lmao", value = "The bot laughs along")
+        embed.add_field(name = "lol, lmao, haha, lmfao", value = "The bot laughs along")
         embed.add_field(name="inspire", value = "Prints out random inspirational quotes")
         embed.add_field(name="congrats", value = "congratulates the user")
         embed.add_field(name = "responding true", value = "turns on encouraging bot response")
@@ -77,19 +77,31 @@ async def on_message(message):
         await message.channel.send(content=None, embed=embed)
 
   if message.content.startswith("hello"):
-    await message.channel.send("Hello there")
+    await message.channel.send("Hello there, how are you doing ?")
+
+  if message.content.startswith("HELLO"):
+    await message.channel.send("Hello there, how are you doing ?")
 
   if message.content.startswith("hi"):
-    await message.channel.send("Hello there")
+    await message.channel.send("Hello there, how are you doing ?")
+
+  if message.content.startswith("HI"):
+    await message.channel.send("Hello there, how are you doing ?")
 
   if message.content.startswith("hey"):
-    await message.channel.send("Hello there")
+    await message.channel.send("Hello there, how are you doing ?")
 
   if message.content.startswith("hai"):
-    await message.channel.send("Hello there")
+    await message.channel.send("Hello there, how are you doing ?")
+
+  if message.content.startswith("HAI"):
+    await message.channel.send("Hello there, how are you doing ?")
 
   if message.content.startswith("yo"):
-    await message.channel.send("Hello there")
+    await message.channel.send("Hello there, how are you doing ?")
+
+  if message.content.startswith("YO"):
+    await message.channel.send("Hello there, how are you doing ?")
 
   if message.content.startswith("wassup"):
     await message.channel.send("The sky lol")
@@ -116,10 +128,19 @@ async def on_message(message):
   if message.content.startswith("congrats"):
     await message.channel.send("Congratulations! 🎉")
 
+  if message.content.startswith("CONGRATS"):
+    await message.channel.send("Congratulations! 🎉")
+
   if message.content.startswith("thanks"):
     await message.channel.send("The pleasure is all mine")
 
+  if message.content.startswith("THANKS"):
+    await message.channel.send("The pleasure is all mine")
+
   if message.content.startswith("thx"):
+    await message.channel.send("The pleasure is all mine")
+
+  if message.content.startswith("THX"):
     await message.channel.send("The pleasure is all mine")
 
   if message.content.startswith("lol"):
@@ -132,6 +153,18 @@ async def on_message(message):
     await message.channel.send(":rofl:")
 
   if message.content.startswith("LMAO"):
+    await message.channel.send(":rofl:")
+
+  if message.content.startswith("lmfao"):
+    await message.channel.send(":rofl: :rofl:")
+  
+  if message.content.startswith("LMFAO"):
+    await message.channel.send(":rofl: :rofl:")
+
+  if message.content.startswith("haha"):
+    await message.channel.send(":rofl:")
+
+  if message.content.startswith("HAHA"):
     await message.channel.send(":rofl:")
 
   if db["responding"]:
