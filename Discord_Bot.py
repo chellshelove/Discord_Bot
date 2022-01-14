@@ -66,10 +66,11 @@ async def on_message(message):
         embed.add_field(name = "aw", value = "bot loves you")
         embed.add_field(name = "users", value = "Prints out the number of people in the server")
         embed.add_field(name = "thanks, thx", value = "The bot is glad to be of help")
+        embed.add_field(name = "lol, lmao", value = "The bot laughs along")
         embed.add_field(name="inspire", value = "Prints out random inspirational quotes")
         embed.add_field(name="congrats", value = "congratulates the user")
-        embed.add_field(name = "responding true", value = "turns on bot response")
-        embed.add_field(name = "responding false", value = "turns off bot response")
+        embed.add_field(name = "responding true", value = "turns on encouraging bot response")
+        embed.add_field(name = "responding false", value = "turns off encouraging bot response")
         embed.add_field(name = "new", value = "used to add new encouragements")
         embed.add_field(name = "list", value = "shows a list of newly added encouragements")
         embed.add_field(name = "del", value = "used to delete newly added encouragements")
@@ -104,6 +105,9 @@ async def on_message(message):
 
   if message.content.startswith("aw"):
     await message.channel.send(":smiling_face_with_3_hearts:")
+
+  if message.content.startswith("AW"):
+    await message.channel.send(":smiling_face_with_3_hearts:")
     
   if message.content.startswith("inspire"):
     quote = get_quote()
@@ -117,6 +121,18 @@ async def on_message(message):
 
   if message.content.startswith("thx"):
     await message.channel.send("The pleasure is all mine")
+
+  if message.content.startswith("lol"):
+    await message.channel.send(":rofl:")
+
+  if message.content.startswith("LOL"):
+    await message.channel.send(":rofl:")
+
+  if message.content.startswith("lmao"):
+    await message.channel.send(":rofl:")
+
+  if message.content.startswith("LMAO"):
+    await message.channel.send(":rofl:")
 
   if db["responding"]:
     options = starter_encouragements
