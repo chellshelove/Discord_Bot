@@ -66,6 +66,7 @@ async def on_message(message):
         embed.add_field(name = "aw", value = "bot loves you")
         embed.add_field(name = "users", value = "Prints out the number of people in the server")
         embed.add_field(name = "thanks, thx", value = "The bot is glad to be of help")
+        embed.add_field(name = "wish me luck", value = "The bot bids you good luck")
         embed.add_field(name = "lol, lmao, haha, lmfao", value = "The bot laughs along")
         embed.add_field(name="inspire", value = "Prints out random inspirational quotes")
         embed.add_field(name="congrats", value = "congratulates the user")
@@ -142,6 +143,12 @@ async def on_message(message):
 
   if message.content.startswith("THX"):
     await message.channel.send("The pleasure is all mine")
+
+  if message.content.startswith("wish me luck"):
+    await message.channel.send("Good Luck! :muscle: :star_struck:")
+
+  if message.content.startswith("WISH ME LUCK"):
+    await message.channel.send("Good Luck! :muscle: :star_struck:")
 
   if message.content.startswith("lol"):
     await message.channel.send(":rofl:")
