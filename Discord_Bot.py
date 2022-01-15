@@ -59,22 +59,23 @@ async def on_message(message):
       await message.channel.send(f"Number of Members in this Server: {guild.member_count}")
 
   if message.content.startswith("help"):
-        embed = discord.Embed(title = "Help on BOT", description = "Some useful commands (please type with lowercase letters)")
+        embed = discord.Embed(title = "Help on BOT", description = "Some useful commands (please type with all lowercase or uppercase letters)")
         embed.add_field(name = "hello, hi, hey, hai, yo", value = "Greets the user")
-        embed.add_field(name = "wassup", value = "bot tells you what's up")
-        embed.add_field(name = "how are you, how r u, hru", value = "bot replies with how they're feeling")
-        embed.add_field(name = "aw", value = "bot loves you")
+        embed.add_field(name = "wassup", value = "Bot tells you what's up")
+        embed.add_field(name = "how are you, how r u, hru", value = "Bot replies with how they're feeling")
+        embed.add_field(name = "aw", value = "Bot loves you")
         embed.add_field(name = "users", value = "Prints out the number of people in the server")
         embed.add_field(name = "thanks, thx", value = "The bot is glad to be of help")
+        embed.add_field(name = "i love you, i love u, i luv u, ily, ilu", value = "The bot will send love")
         embed.add_field(name = "wish me luck", value = "The bot bids you good luck")
         embed.add_field(name = "lol, lmao, haha, lmfao", value = "The bot laughs along")
         embed.add_field(name="inspire", value = "Prints out random inspirational quotes")
-        embed.add_field(name="congrats", value = "congratulates the user")
-        embed.add_field(name = "responding true", value = "turns on encouraging bot response")
-        embed.add_field(name = "responding false", value = "turns off encouraging bot response")
-        embed.add_field(name = "new", value = "used to add new encouragements")
-        embed.add_field(name = "list", value = "shows a list of newly added encouragements")
-        embed.add_field(name = "del", value = "used to delete newly added encouragements")
+        embed.add_field(name="congrats", value = "Congratulates the user")
+        embed.add_field(name = "responding true", value = "Turns on encouraging bot response")
+        embed.add_field(name = "responding false", value = "Turns off encouraging bot response")
+        embed.add_field(name = "new", value = "Used to add new encouragements")
+        embed.add_field(name = "list", value = "Shows a list of newly added encouragements")
+        embed.add_field(name = "del", value = "Used to delete newly added encouragements")
         await message.channel.send(content=None, embed=embed)
 
   if message.content.startswith("hello"):
@@ -107,13 +108,25 @@ async def on_message(message):
   if message.content.startswith("wassup"):
     await message.channel.send("The sky lol")
 
+  if message.content.startswith("WASSUP"):
+    await message.channel.send("The sky lol")
+
   if message.content.startswith("how are you"):
+    await message.channel.send("Good now that you're here")
+  
+  if message.content.startswith("HOW ARE YOU"):
     await message.channel.send("Good now that you're here")
 
   if message.content.startswith("how r u"):
     await message.channel.send("Good now that you're here")
+  
+  if message.content.startswith("HOW R U"):
+    await message.channel.send("Good now that you're here")
 
   if message.content.startswith("hru"):
+    await message.channel.send("Good now that you're here")
+  
+  if message.content.startswith("HRU"):
     await message.channel.send("Good now that you're here")
 
   if message.content.startswith("aw"):
@@ -123,6 +136,10 @@ async def on_message(message):
     await message.channel.send(":smiling_face_with_3_hearts:")
     
   if message.content.startswith("inspire"):
+    quote = get_quote()
+    await message.channel.send(quote)
+
+  if message.content.startswith("INSPIRE"):
     quote = get_quote()
     await message.channel.send(quote)
 
@@ -149,6 +166,36 @@ async def on_message(message):
 
   if message.content.startswith("WISH ME LUCK"):
     await message.channel.send("Good Luck! :muscle: :star_struck:")
+
+  if message.content.startswith("i love you"):
+    await message.channel.send("I love you more!!")
+
+  if message.content.startswith("I LOVE YOU"):
+    await message.channel.send("I love you more!!")  
+
+  if message.content.startswith("i luv you"):
+    await message.channel.send("I love you more!!")
+
+  if message.content.startswith("I LUV YOU"):
+    await message.channel.send("I love you more!!")
+
+  if message.content.startswith("i love u"):
+    await message.channel.send("I love you more!!")
+
+  if message.content.startswith("I LOVE U"):
+    await message.channel.send("I love you more!!")
+
+  if message.content.startswith("ily"):
+    await message.channel.send("I love you more!!")
+
+  if message.content.startswith("ILY"):
+    await message.channel.send("I love you more!!")
+
+  if message.content.startswith("ilu"):
+    await message.channel.send("I love you more!!")
+
+  if message.content.startswith("ILU"):
+    await message.channel.send("I love you more!!")
 
   if message.content.startswith("lol"):
     await message.channel.send(":rofl:")
