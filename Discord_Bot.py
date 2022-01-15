@@ -6,11 +6,13 @@ import random # import a random module because the bot will choose a random star
 from replit import db # replit's built in database to store user submitted messages  
 from keep_alive import keep_alive # to make sure our bot keeps running even though we close our tab
 # create an .env file on replit to save the token to prevent it from being shared
-my_secret = os.environ['token'] # to get the token, go to the discord developer website, go to your application and press the Bot tab then copy the token
+# to get the token, go to the discord developer website, go to your application and press the Bot tab then copy the token
+my_secret = os.environ['token'] 
 
 intents = discord.Intents.default() # got to pass the intent after it is turned on from the bot setting in the discord developer website
 intents.members = True
-client = discord.Client(intents = intents) # create an instance of a client and it is part of the discord.py library, this is going to be the connection to discord 
+# create an instance of a client and it is part of the discord.py library, this is going to be the connection to discord 
+client = discord.Client(intents = intents) 
 
 sad_words = ["sad", "depressed", "unhappy", "miserable", "depressing", "lost", "rough"] # create a variable and put it in sad words 
 
@@ -20,7 +22,8 @@ if "responding" not in db.keys(): # new key in the database
   db["responding"] = True # start off as true
 
 def get_quote(): # helper function that we can call to return a quote from the API
-  response = requests.get("https://zenquotes.io/api/random") # zenquotes.io API will generate random inspirational quotes, used the request module to request data from the API URL
+  # zenquotes.io API will generate random inspirational quotes, used the request module to request data from the API URL
+  response = requests.get("https://zenquotes.io/api/random") 
   json_data = json.loads(response.text) #convert the response in JSON
   quote = json_data[0]["q"] + " -" + json_data[0]["a"] # getting the quote out from JSON
   return quote # return the quote as a message on discord
@@ -29,7 +32,8 @@ def update_encouragements(encouraging_message): # make a function that will upda
   if "encouragements" in db.keys(): # check if encouragements is a key in the database 
     encouragements = db["encouragements"] # get the value form the database stored under a certain key
     encouragements.append(encouraging_message) # add new encouraging message to the list
-    db["encouragements"] = encouragements # after we add the new encouraging message to the old encouraging message we need to save it to the database
+    # after we add the new encouraging message to the old encouraging message we need to save it to the database
+    db["encouragements"] = encouragements 
   else:
     db["encouragements"] = [encouraging_message] 
 
@@ -39,16 +43,20 @@ def delete_encouragements(index): # a fucntion that will delet any added new enc
     del encouragements[index] # if it is more then we are going to delete
     db["encouragements"] = encouragements # save it into the database again
 
-@client.event # used a client.event decorator to register an event, this client uses events to make it work 
-async def on_ready(): # this is also an asynchronous library on discord.py so things are done in call backs, a callback is a function that is called when something else happens, so the on_ready event is going to be called when the bot is ready to be used
+@client.event # used a client.event decorator to register an event, this client uses events to make it work
+# this is also an asynchronous library on discord.py so things are done in call backs, a callback is a function that is called when something else happens
+# so the on_ready event is going to be called when the bot is ready to be used 
+async def on_ready(): 
     print(f"{client.user.name} has connected to Discord!") # when the bot is ready it's going to print in the console
 
 @client.event # register event 
 async def on_member_join(member): # name of the event 
   guild = client.get_guild(930561768974073936) # get the server id so the bot knows which server its gonna welcome the new member in
   channel = guild.get_channel(930561768974073940) # get the channel id so the bot knows which channel its gonna welcome the new member in
-  await channel.send(f"Welcome to the server {member.mention} ! :partying_face: Please type in 'help' so that I may assist you.") # the message that will be sent in the server
-  await member.send(f"Welcome to {guild.name}'s server, {member.name}! :partying_face:") # the message that will be sent through private message
+  # the message that will be sent in the server
+  await channel.send(f"Welcome to the server {member.mention} ! :partying_face: Please type in 'help' so that I may assist you.") 
+  # the message that will be sent through private message
+  await member.send(f"Welcome to {guild.name}'s server, {member.name}! :partying_face:") 
 
 @client.event # register an event
 async def on_message(message): # this on_message event triggers each time a message is recieved  
@@ -57,7 +65,8 @@ async def on_message(message): # this on_message event triggers each time a mess
 
   guild = client.get_guild(930561768974073936) # get the server id 
   if message.content.startswith("users"):
-      await message.channel.send(f"Number of Members in this Server: {guild.member_count}") # it will count the number of users in this particular server 
+    # it will count the number of users in this particular server 
+      await message.channel.send(f"Number of Members in this Server: {guild.member_count}") 
 
 # embedding all the commands into one clean table
   if message.content.startswith("help"): # if the user types help a list of commands will be presented in an embedded table
