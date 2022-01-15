@@ -16,7 +16,8 @@ client = discord.Client(intents = intents)
 
 sad_words = ["sad", "depressed", "unhappy", "miserable", "depressing", "lost", "rough"] # create a variable and put it in sad words 
 
-starter_encouragements = ["Cheer up!", "Hang in there :)", "You got this!", "You are a great person :)", "We are here for you <3", "Care to share?"] # make a variable and put it starter encouragements to be used to repsond to sad words
+# make a variable and put it starter encouragements to be used to repsond to sad words
+starter_encouragements = ["Cheer up!", "Hang in there :)", "You got this!", "You are a great person :)", "We are here for you <3", "Care to share?"] 
 
 if "responding" not in db.keys(): # new key in the database 
   db["responding"] = True # start off as true
