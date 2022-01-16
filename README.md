@@ -1,5 +1,7 @@
 # Discord_Bot
 
+Algorithm & Programming Final Project 
+
 Chellshe Love Simrochelle - L1CC
 
 Student ID: 2502043040
